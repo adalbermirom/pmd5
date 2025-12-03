@@ -1,0 +1,56 @@
+# ------------------------------------
+# 1. Arquivos de Build do CMake e IDEs
+# ------------------------------------
+
+# Diretórios de build gerados pelo CMake
+/build/
+/CMakeFiles/
+
+# Arquivos temporários e de cache do CMake
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+install_manifest.txt
+compile_commands.json
+*.cmake
+
+# Para IDEs que usam CMake (como CLion ou VSCode)
+.idea/
+.vscode/
+
+# ------------------------------------
+# 2. Arquivos de Binários e Logs
+# ------------------------------------
+
+# Binários de Módulos Compartilhados e Executáveis
+# (Ignora arquivos .so, .dll, e .a para Linux/Windows)
+*.so
+*.dll
+*.lib
+*.a
+*.exe
+*.obj
+
+# Se você tem diretórios específicos para binários (como 'bin32', 'bin64')
+/bin32/
+/bin64/
+
+# Arquivos de log e temporários do compilador
+*.log
+*.tmp
+*.o
+
+# ------------------------------------
+# 3. Arquivos de Backup e Metadados
+# ------------------------------------
+
+# Arquivos de Backup (ex: criados pelo Vim/Nano)
+*~
+# Arquivos de Metadados do macOS
+.DS_Store
+
+# ------------------------------------
+# 4. Arquivos Específicos do PRISMA/Lua
+# ------------------------------------
+*.out
+*.cache

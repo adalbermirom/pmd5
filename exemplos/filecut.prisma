@@ -1,0 +1,60 @@
+//filecut myfile.txt file_out.txt 4 10  --> corta o arquivo do 4 caractere até o 10
+local dir = inclua'igdir'
+funcao principal(args)
+   local file_in, file_out, n1, n2 = teste_args(args);
+   se nao file_in entao use(); fim
+   local txt, err = dir.leia_arquivobin(file_in);
+   se nao txt entao erro(err); fim
+   txt = txt:corte(n1,n2);
+   imprima(dir.grave_arquivobin(file_out, txt));
+   retorne 0;
+fim
+
+se sis.nome:procure('win') entao
+    win = inclua'win';
+senao
+    funcao conv_c(...) retorne ...; fim
+fim
+
+funcao use()
+    poe(conv_c[[
+    ----------- Faltam parâmetros ---------
+    
+    Use:     filecut file_in  file_out  n1 n2  
+    
+    --> file_in arquivo de entrada para ser cortado
+    --> file_out nome do arquivo final que será gravado
+    --> n1 caractere inicial para corte
+    --> n2 caractere final para corte
+    --> ! padrão de n2 é o final do arquivo
+    
+]]);
+fim
+
+funcao teste_args(args)
+     //     file_in       file_out      n1       n2 opcional
+    se nao args[1] ou nao args[2] ou nao args[3] entao 
+        use();
+        sis.saia(1);
+    fim
+    
+    local file_in = args[1];
+    local file_out = args[2];
+    local n1 = convnumero(args[3]);
+    local n2 = convnumero(args[4]) ou -1;
+    retorne S(file_in), S(file_out), N(n1), N(n2);
+fim
+
+funcao S(s)
+    se tipo(s)<>'string' entao erro( 'Espera-se `string\' em vez de : ' .. tipo(s)); fim
+    retorne s;
+fim
+
+funcao N(s)
+    se tipo(s)<>'numero' entao erro( 'Espera-se `numero\' em vez de : ' .. tipo(s)); fim
+    retorne s;
+fim
+
+
+
+

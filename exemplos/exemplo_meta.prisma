@@ -1,0 +1,47 @@
+ 
+local pmd5 = inclua'pmd5'
+
+/* Eu adicionei o uso de alguns metamétodos para ficar
+ * mais amigável fazer o md5.
+ * 
+ *   bit32 shift a esquerda para atualizar a string.
+ *   ctx = ctx << "string......." 
+ *   é o mesmo que: 
+ *   ctx = ctx:atualize("string.......");
+ *   
+ *   Também adicionei o metamétodo __add que altera a função do '+' para atualizar:
+ *   ctx =  ctx + "string.......";
+ * 
+*/
+
+local ctx = pmd5.inicialize();
+
+//usando o operador bit32: << para atualizar uma string.
+ctx = ctx << "apenas um texto para fazer um hashing md5 de exemplo." << "outra string qualquer...........";
+
+local res = ctx:finalize_hex();
+
+imprima(res);
+
+//usando o metamétodo __call para executar o contexto md5 como se fosse uma função:
+
+local ctx2 = pmd5.inicialize();
+ctx2("apenas um texto para fazer um hashing md5 de exemplo.");
+ctx2("outra string qualquer...........");
+local res2 = ctx2:finalize():hex(); //retorna uma string binário e usamos a função hex() da lib string.
+imprima(res2);
+
+//usando o metamétodo __add '+' para atualizar uma string no md5:
+
+local ctx3 = pmd5.inicialize();
+ctx3 = ctx3 + "apenas um texto para fazer um hashing md5 de exemplo." + "outra string qualquer...........";
+
+local res3 = ctx3:finalize():hex(); //retorna uma string binário e usamos a função hex() da lib string.
+imprima(res3);
+
+
+
+//o valor final deve ser esse, se a string original não foi alterada:
+imprima('7a25338d262d9861685d9dd65eb18fc1');
+
+

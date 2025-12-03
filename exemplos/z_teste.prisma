@@ -1,0 +1,7 @@
+local pmd5 = inclua'pmd5'
+
+local txt = "minha string longa para fazer um hashing de exemplo md5..........";
+imprima(pmd5.hex(txt));
+imprima('b7f726e31dabcaa19712f420deb01e54');
+
+

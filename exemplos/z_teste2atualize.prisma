@@ -1,0 +1,26 @@
+
+local pmd5 = inclua'pmd5'
+local dir = inclua'igdir'
+
+local file = args[0];
+
+//Quando o arquivo for muito grande, para o programa não ficar travado, use esta técnica:
+
+local a,err = es.abra(file,'leiturabin');
+se nao a entao erro(err); fim
+local txt = a:leia(100); //processa de 100 em 100 bytes.
+local ctx = pmd5.inicialize();
+   
+enquanto txt inicio
+
+    ctx:atualize(txt);
+    txt = a:leia(100);
+    imprima(txt);
+fim
+a:feche();
+local final_md5 = ctx:finalize_hex();
+  
+
+imprima(final_md5);
+sis.execute('md5sum ' .. file);
+
