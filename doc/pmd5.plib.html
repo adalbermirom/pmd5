@@ -64,13 +64,6 @@ Biblioteca de hash md5 para Prisma feita em C.
 
 
 
-<p>
-  Esta lib binding foi feita em cima do código de Cameron Rich.
-</p>
-<p>
-  Sua licença permite ser usada de forma totalmente gratuita, tendo apenas de manter
-  as notas originais que já se encontram no arquivo ./include/md5.h
-</p>
 
 <h3>Exemplo de uso:</h3>
 
@@ -104,10 +97,10 @@ b7f726e31dabcaa19712f420deb01e54
 <a id="id_000004" hiden></a>
 <section class="caixa-doc">
 <span class="float-right-top" ><a href="#" title="Voltar ao menu funções.">Voltar ao início  </a></span><h2 class="subtitulo-doc">funcao pmd5.inicialize()</h2><div class="corpo-doc">
-<p>Cria e inicializa um novo objeto de contexto MD5 (MD5_CTX) para hashing incremental.</p>
+<p>Cria e inicializa um novo objeto de contexto MD5 (Md5Context) para hashing incremental.</p>
 
 
-<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     1 userdata O objeto MD5_CTX recém-criado, pronto para ser atualizado.</span>
+<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     1 userdata O objeto Md5Context recém-criado, pronto para ser atualizado.</span>
 </div>
 <div class="returns-doc"><span >     2 string Em caso de erro, retorna &#39;nil&#39; seguido da mensagem de erro.</span>
 </div>
@@ -127,12 +120,12 @@ b7f726e31dabcaa19712f420deb01e54
 <a id="id_000006" hiden></a>
 <section class="caixa-doc">
 <span class="float-right-top" ><a href="#" title="Voltar ao menu funções.">Voltar ao início  </a></span><h2 class="subtitulo-doc">funcao ctx:atualize(txt)</h2><div class="corpo-doc">
-<p>Adiciona dados ao contexto MD5 (MD5_CTX) atual.</p>
+<p>Adiciona dados ao contexto MD5 (Md5Context) atual.</p>
 
 <div class="titulo-params"><h3>Parâmetros:</h3></div><div class="params-doc"><span > txt string A porção da string a ser adicionada ao hash.</span>
 </div>
 
-<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     1 userdata O próprio objeto MD5_CTX, permitindo encadeamento.</span>
+<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     1 userdata O próprio objeto Md5Context, permitindo encadeamento.</span>
 </div>
 <div class="returns-doc"><span >     2 string Em caso de erro, retorna &#39;nil&#39; seguido da mensagem de erro.</span>
 </div>
@@ -160,7 +153,7 @@ ctx<span style="font-weight:bold;">:</span>atualize<span style="font-weight:bold
 <div class="titulo-params"><h3>Parâmetros:</h3></div><div class="params-doc"><span > txt string A string a ser adicionada ao hash.</span>
 </div>
 
-<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     1 userdata O próprio objeto MD5_CTX para encadeamento.</span>
+<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     1 userdata O próprio objeto Md5Context para encadeamento.</span>
 </div>
 <h4>Exemplo:</h4>
 
@@ -183,7 +176,7 @@ ctx<span style="font-weight:bold;">:</span>atualize<span style="font-weight:bold
 <div class="titulo-params"><h3>Parâmetros:</h3></div><div class="params-doc"><span > txt string A string a ser adicionada ao hash.</span>
 </div>
 
-<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     1 userdata O próprio objeto MD5_CTX para encadeamento.</span>
+<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     1 userdata O próprio objeto Md5Context para encadeamento.</span>
 </div>
 <h4>Exemplo:</h4>
 
@@ -206,7 +199,7 @@ ctx <span style="font-weight:bold;">=</span> ctx <span style="font-weight:bold;"
 <span class="float-right-top" ><a href="#" title="Voltar ao menu funções.">Voltar ao início  </a></span><h2 class="subtitulo-doc">funcao ctx:finalize()</h2><div class="corpo-doc">
 <p>Finaliza o processo de hashing e retorna o resultado em formato binário (raw).</p>
 
-<p>&lt;strong&gt;Atenção:&lt;/strong&gt; Após a finalização, o objeto MD5_CTX é invalidado (liberado).</p>
+<p>&lt;strong&gt;Atenção:&lt;/strong&gt; Após a finalização, o objeto Md5Context é invalidado (liberado).</p>
 
 
 <div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     1 string O hash MD5 como string binária (16 bytes).</span>
@@ -220,7 +213,7 @@ ctx <span style="font-weight:bold;">=</span> ctx <span style="font-weight:bold;"
 <span class="float-right-top" ><a href="#" title="Voltar ao menu funções.">Voltar ao início  </a></span><h2 class="subtitulo-doc">funcao ctx:finalize_hex()</h2><div class="corpo-doc">
 <p>Finaliza o processo de hashing e retorna o resultado em formato hexadecimal.</p>
 
-<p>&lt;strong&gt;Atenção:&lt;/strong&gt; Após a finalização, o objeto MD5_CTX é invalidado (liberado).</p>
+<p>&lt;strong&gt;Atenção:&lt;/strong&gt; Após a finalização, o objeto Md5Context é invalidado (liberado).</p>
 
 
 <div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     1 string O hash MD5 como string hexadecimal (32 caracteres).</span>

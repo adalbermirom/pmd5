@@ -1,5 +1,5 @@
 /**
-*  $Id: pmd5.c,v 1.0 2019/08/27 Exp $
+*  $Id: pmd5.c,v 1.0  dez/2025 Exp $
 *  binding md5 para Prisma-1.0
 *  @author  Adalberto Amorim Felipe
 * 
@@ -52,13 +52,6 @@ $.includes: -I../include -I../vendor
 \autor Adalberto
 \resumo Biblioteca de hash md5 para Prisma feita em C.
 
-<p>
-  Esta lib binding foi feita em cima do código de Cameron Rich.
-</p>
-<p>
-  Sua licença permite ser usada de forma totalmente gratuita, tendo apenas de manter
-  as notas originais que já se encontram no arquivo ./include/md5.h
-</p>
 
 \h3 Exemplo de uso:
 
