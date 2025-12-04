@@ -15,6 +15,12 @@ local res = ctx:finalize();
 
 imprima(res:hex());
 
+/* usando o operador left shift como açúcar sintático para atualize() */
+local ctx2 = md5.hmac_inicialize(chave);
+ctx2 = ctx2 << txt << txt; /* mesmo que ctx2 = ctx2:atualize(txt):atualize(txt); */
+local res_hex = ctx2:finalize_hex();
+imprima(res_hex);
+
 //-->cd30cf19f8b606a274bf9853fd30aec6	32
 
 

@@ -1,4 +1,4 @@
-/* lib pmd5 prisma, Wed Dec  3 22:24:09 2025*/
+/* lib pmd5 prisma, Thu Dec  4 08:55:35 2025*/
 #ifndef _LIB_PMD5_
 #define _LIB_PMD5_  /*============{*/
 
@@ -633,6 +633,37 @@ static int p_HmacMd5Context_final(lua_State*L){
 
 
 
+
+static int p_HmacMd5Context_final_hex(lua_State*L){
+    HmacMd5Context *ctx;
+    userdata *este = ((userdata*)luaL_checkudata(L, 1, "userdata::HmacMd5Context"));
+    ctx = (HmacMd5Context*)este->u;
+    if( !ctx ){
+		lua_pushnil(L);
+		lua_pushliteral(L, "Md5 hmac erro: HmacMd5Context inválido, ou já liberado");
+		return 2;
+	}
+    unsigned char output[HASHLEN];
+    hmac_md5_final(ctx, output);
+    
+    char hex [ 2 * HASHLEN + 1 ];
+    byte_to_hex(output, HASHLEN, hex, 2 * HASHLEN + 1);
+    
+    lua_pushlstring(L, hex, 2*HASHLEN);
+    
+
+    if(ctx){
+		free(ctx);
+		este->u = NULL;		
+	}
+    
+    return 1;
+    return 0;
+}
+
+
+
+
 static int p_hmac_md5(lua_State*L){
     
     int status;
@@ -693,6 +724,20 @@ static int p_hmac_md5_hex(lua_State*L){
     return 0;
 }
 
+static const luaL_Reg lib_HmacMd5Context_funcs[] = {
+    {"atualize", p_HmacMd5Context_update},
+    {"__add", p_HmacMd5Context___add},
+    {"__bshl", p_HmacMd5Context___bshl},
+    {"__call", p_HmacMd5Context___call},
+    {"__gc", p_HmacMd5Context___gc},
+    {"__tipo", p_HmacMd5Context___tipo},
+    {"__convstring", p_HmacMd5Context___convstring},
+    {"finalize", p_HmacMd5Context_final},
+    {"finalize_hex", p_HmacMd5Context_final_hex},
+    {NULL, NULL}
+};
+
+
 static const luaL_Reg lib_Md5Context_funcs[] = {
     {"atualize", p_Md5Context_update},
     {"__gc", p_Md5Context___gc},
@@ -704,19 +749,6 @@ static const luaL_Reg lib_Md5Context_funcs[] = {
     {"__add", p_Md5Context___add},
     {"finalize", p_Md5Context_final},
     {"finalize_hex", p_Md5Context_final_hex},
-    {NULL, NULL}
-};
-
-
-static const luaL_Reg lib_HmacMd5Context_funcs[] = {
-    {"atualize", p_HmacMd5Context_update},
-    {"__add", p_HmacMd5Context___add},
-    {"__bshl", p_HmacMd5Context___bshl},
-    {"__call", p_HmacMd5Context___call},
-    {"__gc", p_HmacMd5Context___gc},
-    {"__tipo", p_HmacMd5Context___tipo},
-    {"__convstring", p_HmacMd5Context___convstring},
-    {"finalize", p_HmacMd5Context_final},
     {NULL, NULL}
 };
 
@@ -734,8 +766,8 @@ static const luaL_Reg lib_pmd5_funcs[] = {
 /*funcao para registrar o modulo*/
 LUA_API int luaopen_pmd5(lua_State *L) {
     PRIS_REGISTER_LIB(L, "pmd5", lib_pmd5_funcs);
-    PRIS_REGISTER_META(L, "userdata::Md5Context", lib_Md5Context_funcs);
     PRIS_REGISTER_META(L, "userdata::HmacMd5Context", lib_HmacMd5Context_funcs);
+    PRIS_REGISTER_META(L, "userdata::Md5Context", lib_Md5Context_funcs);
     tab("VERSAO", literal, VERSAO); /*Veja essa macro e outras em prisma.h*/
     return 1;
 }

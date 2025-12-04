@@ -740,7 +740,7 @@ fim
 \resumo Encerra o cálculo, libera a memória do contexto e devolve o hash.
 \retorno {string} - O hash binário final (64 bytes). O contexto torna-se inválido após esta chamada.
 ]]
-funcao HmacMd5Context:final()
+funcao HmacMd5Context:finalize()
 */
 funcao HmacMd5Context:final(este) #[export finalize]
     HmacMd5Context *ctx;
@@ -754,6 +754,43 @@ funcao HmacMd5Context:final(este) #[export finalize]
     unsigned char output[HASHLEN];
     hmac_md5_final(ctx, output);
     lua_pushlstring(L, output, HASHLEN);
+    
+    /* limpando a memória */
+    if(ctx){
+		free(ctx);
+		este->u = NULL;		
+	}
+    
+    return 1;
+fim
+
+
+
+
+/*
+--[[[
+\fn finalize_hex
+\resumo Encerra o cálculo, libera a memória do contexto e devolve o hash.
+\retorno {string} - O hash binário final (64 bytes). O contexto torna-se inválido após esta chamada.
+]]
+funcao HmacMd5Context:finalize_hex()
+*/
+funcao HmacMd5Context:final_hex(este) #[export finalize_hex]
+    HmacMd5Context *ctx;
+    userdata *este = $.HmacMd5Context(este);
+    ctx = (HmacMd5Context*)este->u;
+    if( !ctx ){
+		lua_pushnil(L);
+		lua_pushliteral(L, "Md5 hmac erro: HmacMd5Context inválido, ou já liberado");
+		return 2;
+	}
+    unsigned char output[HASHLEN];
+    hmac_md5_final(ctx, output);
+    
+    char hex [ 2 * HASHLEN + 1 ];
+    byte_to_hex(output, HASHLEN, hex, 2 * HASHLEN + 1);
+    
+    lua_pushlstring(L, hex, 2*HASHLEN);
     
     /* limpando a memória */
     if(ctx){

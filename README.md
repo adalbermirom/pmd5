@@ -118,6 +118,42 @@ imprima("Hash Hex: ", res_bin:hex());
 //-- O objeto ctx_bin é liberado.
 ```
 
+### Funções hmac
+
+Adicionei funções hmac para o md5, pois são muito importantes para reforçar a segurança do hash.
+
+Exemplo:
+```lua
+local md5 = inclua'pmd5'
+
+local chave = "uma chave privada qualquer para segurança123456!!!!!!!!!!!!";
+local txt = "minha string longa para fazer um hashing de exemplo md5..........";
+
+local result = md5.hmac(chave, txt..txt);
+imprima(result:hex());
+
+/* modo incremental: inicialize, atualize, finalize */
+
+local ctx = md5.hmac_inicialize(chave);
+ctx:atualize(txt);
+ctx:atualize(txt);
+local res = ctx:finalize();
+
+imprima(res:hex());//usamos a função string.hex() da biblioteca padrão de Prisma.
+
+/* usando o operador left shift como açúcar sintático para atualize() */
+local ctx2 = md5.hmac_inicialize(chave);
+ctx2 = ctx2 << txt << txt; /* mesmo que ctx2 = ctx2:atualize(txt):atualize(txt); */
+
+local res_hex = ctx2:finalize_hex(); /* usamos a função hex própria da lib pmd5 */
+imprima(res_hex);
+
+//-->cd30cf19f8b606a274bf9853fd30aec6	32
+
+```
+ 
+
+
 ---
 ## 📜 Licença
 
