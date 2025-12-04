@@ -1,6 +1,6 @@
 
 local pmd5 = inclua'pmd5'
-local dir = inclua'igdir'
+local dir = inclua'dir'
 
 local file = args[0];
 
@@ -17,10 +17,10 @@ enquanto txt inicio
     txt = a:leia(100);
     imprima(txt);
 fim
+
 a:feche();
 local final_md5 = ctx:finalize_hex();
   
-
 imprima(final_md5);
 sis.execute('md5sum ' .. file);
 

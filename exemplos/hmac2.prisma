@@ -1,0 +1,40 @@
+local md5 = inclua'pmd5'; //cálculo md5 e hmac
+    
+    local chave = 'minha chave secreta!!!!!!';
+    local meu_arquivo = 'hmac2.prisma';//troque por um arquivo válido para o teste.
+    funcao principal(arg)
+         //abrindo um arquivo para leitura.
+        local a, err = es.abra(meu_arquivo, 'leitura');
+        se nao a entao erro(err); fim //se der erro...
+        
+        //iniciando o hmac contexto.
+        local ctx = md5.hmac_inicialize(chave);
+        
+        local tambloco = 4096;
+        
+        enquanto verdadeiro inicio //laço infinito, controlado por dentro.
+            dados = a:leia(tambloco); //Lê 4096 bytes por vez.
+            se nao dados entao
+                quebre;
+            fim
+            ctx:atualize(dados); //se ainda tiver dados, eles são processados pelo hmac.            
+        fim
+        
+        a:feche();
+        
+        //finalizando:
+        
+        local res = ctx:finalize();
+        res = string.hex(res);
+        imprima(res, meu_arquivo);
+        
+        //o comando abaixo funciona no Linux apenas, não no Windows.
+        cmd = 'cat hmac2.prisma | openssl dgst -md5 -hmac "minha chave secreta!!!!!!"'
+        local a, err = es.pabra(cmd, 'leitura');
+        se nao a entao erro(erro); fim
+        local txt = a:leia('*t');
+        a:feche();
+        imprima(txt:corte(string.tamanho('MD5(stdin)=  '), -2), meu_arquivo);
+        
+        retorne 0;
+    fim

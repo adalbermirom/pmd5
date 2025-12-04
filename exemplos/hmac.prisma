@@ -1,0 +1,20 @@
+local md5 = inclua'pmd5'
+
+local chave = "uma chave privada qualquer para segurança123456!!!!!!!!!!!!";
+local txt = "minha string longa para fazer um hashing de exemplo md5..........";
+
+local result = md5.hmac(chave, txt..txt);
+imprima(result:hex());
+
+/* modo incremental: inicialize, atualize, finalize */
+
+local ctx = md5.hmac_inicialize(chave);
+ctx:atualize(txt);
+ctx:atualize(txt);
+local res = ctx:finalize();
+
+imprima(res:hex());
+
+//-->cd30cf19f8b606a274bf9853fd30aec6	32
+
+
