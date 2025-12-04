@@ -772,7 +772,7 @@ fim
 \resumo Calcula o HMAC-MD5 de uma mensagem completa de uma só vez.
 \param chave {string} - A chave secreta usada para o hashing.
 \param mensagem {string} - A mensagem (texto ou binário) a ser autenticada.
-\retorno {string} - O hash binário resultante (64 bytes), ou nil em caso de erro.
+\retorno {string} - O hash binário resultante (64 bytes), ou nulo em caso de erro.
 ]]
 funcao md5.hmac(chave, mensagem)
 */
@@ -807,7 +807,7 @@ fim
 \resumo Calcula o HMAC-MD5 de uma mensagem completa de uma só vez, mas retorna em hexadecimal.
 \param chave {string} - A chave secreta usada para o hashing.
 \param mensagem {string} - A mensagem (texto ou binário) a ser autenticada.
-\retorno {string} - O hash hexadecimal resultante, ou nil em caso de erro.
+\retorno {string} - O hash hexadecimal resultante, ou nulo em caso de erro.
 ]]
 funcao md5.hmac_hex(chave, mensagem)
 */

@@ -13,16 +13,24 @@
 
 </head>
 <body>
-<nav id="id_000012"  class="floating-menu">
-<div class="menu-button" title="Ocultar painel lateral" onclick="show_menu_flutuante(this, 'id_000013', 'id_000012')">&#x2630;</div>
-<div class="com-rolagem" id="id_000013" hidden>
+<nav id="id_00001F"  class="floating-menu">
+<div class="menu-button" title="Ocultar painel lateral" onclick="show_menu_flutuante(this, 'id_000020', 'id_00001F')">&#x2630;</div>
+<div class="com-rolagem" id="id_000020" hidden>
 <div class="caixa "><h2>Funções:</h2>
+<a href="#id_000016">HmacMd5Context:__add</a>
+<a href="#id_000018">HmacMd5Context:__bshl</a>
+<a href="#id_00001A">HmacMd5Context:__call</a>
+<a href="#id_000014">HmacMd5Context:atualize</a>
+<a href="#id_00001C">HmacMd5Context:final</a>
 <a href="#id_00000A">ctx:__add</a>
 <a href="#id_000008">ctx:__bshl</a>
 <a href="#id_000006">ctx:atualize</a>
 <a href="#id_00000C">ctx:finalize</a>
 <a href="#id_00000D">ctx:finalize_hex</a>
 <a href="#id_000010">md5.hex</a>
+<a href="#id_00001D">md5.hmac</a>
+<a href="#id_00001E">md5.hmac_hex</a>
+<a href="#id_000012">md5.hmac_inicialize</a>
 <a href="#id_00000E">pmd5.binario</a>
 <a href="#id_000004">pmd5.inicialize</a>
 
@@ -40,15 +48,23 @@
 <h3>Versão: 1.3 estável</h3><br>
 <div>
 Biblioteca de hash md5 para Prisma feita em C.
-<a href="#id_000014"> mais...</a></div>
+<a href="#id_000021"> mais...</a></div>
 <div class="caixa com-borda"><div><h2 >Funções:</h2>
 <ol>
+<li><a href="#id_000016">HmacMd5Context:__add</a></li>
+<li><a href="#id_000018">HmacMd5Context:__bshl</a></li>
+<li><a href="#id_00001A">HmacMd5Context:__call</a></li>
+<li><a href="#id_000014">HmacMd5Context:atualize</a></li>
+<li><a href="#id_00001C">HmacMd5Context:final</a></li>
 <li><a href="#id_00000A">ctx:__add</a></li>
 <li><a href="#id_000008">ctx:__bshl</a></li>
 <li><a href="#id_000006">ctx:atualize</a></li>
 <li><a href="#id_00000C">ctx:finalize</a></li>
 <li><a href="#id_00000D">ctx:finalize_hex</a></li>
 <li><a href="#id_000010">md5.hex</a></li>
+<li><a href="#id_00001D">md5.hmac</a></li>
+<li><a href="#id_00001E">md5.hmac_hex</a></li>
+<li><a href="#id_000012">md5.hmac_inicialize</a></li>
 <li><a href="#id_00000E">pmd5.binario</a></li>
 <li><a href="#id_000004">pmd5.inicialize</a></li>
 </ol>
@@ -56,7 +72,7 @@ Biblioteca de hash md5 para Prisma feita em C.
 
 </div><br>
 
-<h2 id="id_000014">pmd5.c</h2><div>
+<h2 id="id_000021">pmd5.c</h2><div>
 Biblioteca de hash md5 para Prisma feita em C.
 </div>
 
@@ -271,6 +287,277 @@ imprima(bin:hex()); // Converte para hexadecimal usando a lib string nativa.
 <span style="color:green">// Saída: 2662c11867c48f8045995408b47120cc
 </span></pre></div></div>
 
+</div>
+</div>
+</section>
+<a id="id_000012" hiden></a>
+<section class="caixa-doc">
+<span class="float-right-top" ><a href="#" title="Voltar ao menu funções.">Voltar ao início  </a></span><h2 class="subtitulo-doc">funcao md5.hmac_inicialize(chave)</h2><div class="corpo-doc">
+<p>Cria um novo contexto para cálculo incremental de HMAC-MD5.</p>
+
+<div class="titulo-params"><h3>Parâmetros:</h3></div><div class="params-doc"><span > chave {string} - A chave secreta inicial.</span>
+</div>
+
+<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     {userdata} - Um objeto de contexto (HmacMd5Context) pronto para uso.</span>
+</div>
+
+<h3>Exemplo:</h3>
+
+<div class="caixa com-borda"><div class="tool-button float-right-top" title="Copiar para área de transferência." onclick="copyText('id_000013')">&#128203;</div>&nbsp;<i></i><pre id="id_000013" hidden>    local md5 = inclua&#39;pmd5&#39;;
+    
+    local chave_secreta = &#39;uma chave secreta qualquer para segurança!&#39;
+    local ctx = md5.hmac_inicialize(chave_secreta);
+    ctx:atualize(dados);
+    local resultado = ctx:finalize();
+    local res_hex = string.hex(resultado);
+    imprima(res_hex);
+</pre><div style=" line-height: 1.5; padding:2; font-size: 16px; border: 1px solid #d5d5d5; overflow: auto; max-height: 400px; ;display: flex;"><div><pre style="text-align: right;">
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  1</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;">  2</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  3</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;">  4</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  5</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;">  6</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  7</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;">  8</span>
+</pre></div>
+<div style="padding-left: 10px;flex-grow: 1"><pre>
+    <span style="font-weight:bold;color:#b50546">local</span> md5 <span style="font-weight:bold;">=</span> <span style="color:#b50546">inclua</span><span style="color:blue">&#39;pmd5&#39;</span><span style="font-weight:bold;">;</span>
+    
+    <span style="font-weight:bold;color:#b50546">local</span> chave_secreta <span style="font-weight:bold;">=</span> <span style="color:blue">&#39;uma chave secreta qualquer para segurança!&#39;</span>
+    <span style="font-weight:bold;color:#b50546">local</span> ctx <span style="font-weight:bold;">=</span> md5<span style="font-weight:bold;">.</span>hmac_inicialize<span style="font-weight:bold;">(</span>chave_secreta<span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span>
+    ctx<span style="font-weight:bold;">:</span>atualize<span style="font-weight:bold;">(</span>dados<span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span>
+    <span style="font-weight:bold;color:#b50546">local</span> resultado <span style="font-weight:bold;">=</span> ctx<span style="font-weight:bold;">:</span>finalize<span style="font-weight:bold;">(</span><span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span>
+    <span style="font-weight:bold;color:#b50546">local</span> res_hex <span style="font-weight:bold;">=</span> <span style="color:#b50546">string</span><span style="font-weight:bold;">.</span><span style="color:#b50546">hex</span><span style="font-weight:bold;">(</span>resultado<span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span>
+    <span style="color:#b50546">imprima</span><span style="font-weight:bold;">(</span>res_hex<span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span>
+</pre></div></div>
+
+</div>
+</div>
+</section>
+<a id="id_000014" hiden></a>
+<section class="caixa-doc">
+<span class="float-right-top" ><a href="#" title="Voltar ao menu funções.">Voltar ao início  </a></span><h2 class="subtitulo-doc">funcao HmacMd5Context:atualize(dados)</h2><div class="corpo-doc">
+<p>Adiciona um pedaço de dados ao contexto de hash atual.</p>
+
+<div class="titulo-params"><h3>Parâmetros:</h3></div><div class="params-doc"><span > dados {string} - O fragmento de texto ou binário para processar.</span>
+</div>
+
+<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     {userdata} - Retorna o próprio contexto (self) para permitir encadeamento.</span>
+</div>
+<h3>Exemplo:</h3>
+
+<div class="caixa com-borda"><div class="tool-button float-right-top" title="Copiar para área de transferência." onclick="copyText('id_000015')">&#128203;</div>&nbsp;<i></i><pre id="id_000015" hidden>    local md5 = inclua&#39;pmd5&#39;; //cálculo md5 e hmac
+    
+    local chave = &#39;minha chave secreta!!!!!!&#39;;
+    local meu_arquivo = &#39;hmac.prisma&#39;;//troque por um arquivo válido para o teste.
+    funcao principal(arg)
+         //abrindo um arquivo para leitura.
+        local a, err = es.abra(meu_arquivo, &#39;leitura&#39;);
+        se nao a entao erro(err); fim //se der erro...
+        
+        //iniciando o hmac contexto.
+        local ctx = md5.hmac_inicialize(chave);
+        
+        local tambloco = 4096;
+        
+        enquanto verdadeiro inicio //laço infinito, controlado por dentro.
+            dados = a:leia(tambloco); //Lê 4096 bytes por vez.
+            se nao dados entao
+                quebre;
+            fim
+            ctx:atualize(dados); //se ainda tiver dados, eles são processados pelo hmac.            
+        fim
+        
+        a:feche();
+        
+        //finalizando:
+        
+        local res = ctx:finalize();
+        res = string.hex(res);
+        imprima(res, meu_arquivo);
+        
+        retorne 0;
+    fim
+
+</pre><div style=" line-height: 1.5; padding:2; font-size: 16px; border: 1px solid #d5d5d5; overflow: auto; max-height: 400px; ;display: flex;"><div><pre style="text-align: right;">
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  1</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;">  2</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  3</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;">  4</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  5</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;">  6</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  7</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;">  8</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  9</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;"> 10</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;"> 11</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;"> 12</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;"> 13</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;"> 14</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;"> 15</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;"> 16</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;"> 17</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;"> 18</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;"> 19</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;"> 20</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;"> 21</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;"> 22</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;"> 23</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;"> 24</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;"> 25</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;"> 26</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;"> 27</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;"> 28</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;"> 29</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;"> 30</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;"> 31</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;"> 32</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;"> 33</span>
+</pre></div>
+<div style="padding-left: 10px;flex-grow: 1"><pre>
+    <span style="font-weight:bold;color:#b50546">local</span> md5 <span style="font-weight:bold;">=</span> <span style="color:#b50546">inclua</span><span style="color:blue">&#39;pmd5&#39;</span><span style="font-weight:bold;">;</span> <span style="color:green">//cálculo md5 e hmac
+</span>    
+    <span style="font-weight:bold;color:#b50546">local</span> chave <span style="font-weight:bold;">=</span> <span style="color:blue">&#39;minha chave secreta!!!!!!&#39;</span><span style="font-weight:bold;">;</span>
+    <span style="font-weight:bold;color:#b50546">local</span> meu_arquivo <span style="font-weight:bold;">=</span> <span style="color:blue">&#39;hmac.prisma&#39;</span><span style="font-weight:bold;">;</span><span style="color:green">//troque por um arquivo válido para o teste.
+</span>    <span style="font-weight:bold;color:#b50546">funcao</span> principal<span style="font-weight:bold;">(</span>arg<span style="font-weight:bold;">)</span>
+         <span style="color:green">//abrindo um arquivo para leitura.
+</span>        <span style="font-weight:bold;color:#b50546">local</span> a, err <span style="font-weight:bold;">=</span> <span style="color:#b50546">es</span><span style="font-weight:bold;">.</span><span style="color:#b50546">abra</span><span style="font-weight:bold;">(</span>meu_arquivo, <span style="color:blue">&#39;leitura&#39;</span><span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span>
+        <span style="font-weight:bold;color:#b50546">se</span> <span style="font-weight:bold;color:#b50546">nao</span> a <span style="font-weight:bold;color:#b50546">entao</span> <span style="color:#b50546">erro</span><span style="font-weight:bold;">(</span>err<span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span> <span style="font-weight:bold;color:#b50546">fim</span> <span style="color:green">//se der erro...
+</span>        
+        <span style="color:green">//iniciando o hmac contexto.
+</span>        <span style="font-weight:bold;color:#b50546">local</span> ctx <span style="font-weight:bold;">=</span> md5<span style="font-weight:bold;">.</span>hmac_inicialize<span style="font-weight:bold;">(</span>chave<span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span>
+        
+        <span style="font-weight:bold;color:#b50546">local</span> tambloco <span style="font-weight:bold;">=</span> <span style="color:red">4096</span><span style="font-weight:bold;">;</span>
+        
+        <span style="font-weight:bold;color:#b50546">enquanto</span> <span style="font-weight:bold;color:#b50546">verdadeiro</span> <span style="font-weight:bold;color:#b50546">inicio</span> <span style="color:green">//laço infinito, controlado por dentro.
+</span>            dados <span style="font-weight:bold;">=</span> a<span style="font-weight:bold;">:</span><span style="color:#b50546">leia</span><span style="font-weight:bold;">(</span>tambloco<span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span> <span style="color:green">//Lê 4096 bytes por vez.
+</span>            <span style="font-weight:bold;color:#b50546">se</span> <span style="font-weight:bold;color:#b50546">nao</span> dados <span style="font-weight:bold;color:#b50546">entao</span>
+                <span style="font-weight:bold;color:#b50546">quebre</span><span style="font-weight:bold;">;</span>
+            <span style="font-weight:bold;color:#b50546">fim</span>
+            ctx<span style="font-weight:bold;">:</span>atualize<span style="font-weight:bold;">(</span>dados<span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span> <span style="color:green">//se ainda tiver dados, eles são processados pelo hmac.            
+</span>        <span style="font-weight:bold;color:#b50546">fim</span>
+        
+        a<span style="font-weight:bold;">:</span><span style="color:#b50546">feche</span><span style="font-weight:bold;">(</span><span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span>
+        
+        <span style="color:green">//finalizando:
+</span>        
+        <span style="font-weight:bold;color:#b50546">local</span> res <span style="font-weight:bold;">=</span> ctx<span style="font-weight:bold;">:</span>finalize<span style="font-weight:bold;">(</span><span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span>
+        res <span style="font-weight:bold;">=</span> <span style="color:#b50546">string</span><span style="font-weight:bold;">.</span><span style="color:#b50546">hex</span><span style="font-weight:bold;">(</span>res<span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span>
+        <span style="color:#b50546">imprima</span><span style="font-weight:bold;">(</span>res, meu_arquivo<span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span>
+        
+        <span style="font-weight:bold;color:#b50546">retorne</span> <span style="color:red">0</span><span style="font-weight:bold;">;</span>
+    <span style="font-weight:bold;color:#b50546">fim</span>
+
+</pre></div></div>
+
+</div>
+</div>
+</section>
+<a id="id_000016" hiden></a>
+<section class="caixa-doc">
+<span class="float-right-top" ><a href="#" title="Voltar ao menu funções.">Voltar ao início  </a></span><h2 class="subtitulo-doc">funcao HmacMd5Context:__add(dados)</h2><div class="corpo-doc">
+<p>Operador de adição (+) para atualizar dados.</p>
+
+<div class="titulo-params"><h3>Parâmetros:</h3></div><div class="params-doc"><span > dados {string} - Texto a ser adicionado ao hash.</span>
+</div>
+
+<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     {userdata} - O próprio contexto.</span>
+</div>
+<div class="caixa com-borda"><div class="tool-button float-right-top" title="Copiar para área de transferência." onclick="copyText('id_000017')">&#128203;</div>&nbsp;<i>prisma</i><pre id="id_000017" hidden>  ctx = ctx + &quot;dados&quot;
+</pre><div style=" line-height: 1.5; padding:2; font-size: 16px; border: 1px solid #d5d5d5; overflow: auto; max-height: 400px; ;display: flex;"><div><pre style="text-align: right;">
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  1</span>
+</pre></div>
+<div style="padding-left: 10px;flex-grow: 1"><pre>
+  ctx <span style="font-weight:bold;">=</span> ctx <span style="font-weight:bold;">+</span> <span style="color:blue">&quot;dados&quot;</span>
+</pre></div></div>
+
+</div>
+</div>
+</section>
+<a id="id_000018" hiden></a>
+<section class="caixa-doc">
+<span class="float-right-top" ><a href="#" title="Voltar ao menu funções.">Voltar ao início  </a></span><h2 class="subtitulo-doc">funcao HmacMd5Context:__bshl(dados)</h2><div class="corpo-doc">
+<p>Operador Shift Left (&lt;&lt;) para atualização estilo stream.</p>
+
+<div class="titulo-params"><h3>Parâmetros:</h3></div><div class="params-doc"><span > dados {string} - Texto a ser adicionado ao hash.</span>
+</div>
+
+<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     {userdata} - O próprio contexto.</span>
+</div>
+<div class="caixa com-borda"><div class="tool-button float-right-top" title="Copiar para área de transferência." onclick="copyText('id_000019')">&#128203;</div>&nbsp;<i></i><pre id="id_000019" hidden>    ctx = ctx &lt;&lt; &quot;dados&quot;
+    //o mesmo que:
+    ctx = ctx:atualize(&quot;dados&quot;);
+</pre><div style=" line-height: 1.5; padding:2; font-size: 16px; border: 1px solid #d5d5d5; overflow: auto; max-height: 400px; ;display: flex;"><div><pre style="text-align: right;">
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  1</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right;background-color: #ddd; color: black;">  2</span>
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  3</span>
+</pre></div>
+<div style="padding-left: 10px;flex-grow: 1"><pre>
+    ctx <span style="font-weight:bold;">=</span> ctx <span style="font-weight:bold;">&lt;</span><span style="font-weight:bold;">&lt;</span> <span style="color:blue">&quot;dados&quot;</span>
+    <span style="color:green">//o mesmo que:
+</span>    ctx <span style="font-weight:bold;">=</span> ctx<span style="font-weight:bold;">:</span>atualize<span style="font-weight:bold;">(</span><span style="color:blue">&quot;dados&quot;</span><span style="font-weight:bold;">)</span><span style="font-weight:bold;">;</span>
+</pre></div></div>
+
+</div>
+</div>
+</section>
+<a id="id_00001A" hiden></a>
+<section class="caixa-doc">
+<span class="float-right-top" ><a href="#" title="Voltar ao menu funções.">Voltar ao início  </a></span><h2 class="subtitulo-doc">funcao HmacMd5Context:__call(dados)</h2><div class="corpo-doc">
+<p>Permite usar o objeto como função para atualizar dados.</p>
+
+<div class="titulo-params"><h3>Parâmetros:</h3></div><div class="params-doc"><span > dados {string} - Texto a ser adicionado ao hash.</span>
+</div>
+
+<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     {userdata} - O próprio contexto.</span>
+</div>
+<div class="caixa com-borda"><div class="tool-button float-right-top" title="Copiar para área de transferência." onclick="copyText('id_00001B')">&#128203;</div>&nbsp;<i></i><pre id="id_00001B" hidden>    ctx(&quot;dados&quot;)
+</pre><div style=" line-height: 1.5; padding:2; font-size: 16px; border: 1px solid #d5d5d5; overflow: auto; max-height: 400px; ;display: flex;"><div><pre style="text-align: right;">
+<span style="display: inline-block; border-right: 1px solid #ccc; text-align: right; background-color: #ffffff; color: black;">  1</span>
+</pre></div>
+<div style="padding-left: 10px;flex-grow: 1"><pre>
+    ctx<span style="font-weight:bold;">(</span><span style="color:blue">&quot;dados&quot;</span><span style="font-weight:bold;">)</span>
+</pre></div></div>
+
+</div>
+</div>
+</section>
+<a id="id_00001C" hiden></a>
+<section class="caixa-doc">
+<span class="float-right-top" ><a href="#" title="Voltar ao menu funções.">Voltar ao início  </a></span><h2 class="subtitulo-doc">funcao HmacMd5Context:final()</h2><div class="corpo-doc">
+<p>Encerra o cálculo, libera a memória do contexto e devolve o hash.</p>
+
+
+<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     {string} - O hash binário final (64 bytes). O contexto torna-se inválido após esta chamada.</span>
+</div>
+</div>
+</section>
+<a id="id_00001D" hiden></a>
+<section class="caixa-doc">
+<span class="float-right-top" ><a href="#" title="Voltar ao menu funções.">Voltar ao início  </a></span><h2 class="subtitulo-doc">funcao md5.hmac(chave, mensagem)</h2><div class="corpo-doc">
+<p>Calcula o HMAC-MD5 de uma mensagem completa de uma só vez.</p>
+
+<div class="titulo-params"><h3>Parâmetros:</h3></div><div class="params-doc"><span > chave {string} - A chave secreta usada para o hashing.</span>
+</div>
+<div class="params-doc"><span > mensagem {string} - A mensagem (texto ou binário) a ser autenticada.</span>
+</div>
+
+<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     {string} - O hash binário resultante (64 bytes), ou nulo em caso de erro.</span>
+</div>
+</div>
+</section>
+<a id="id_00001E" hiden></a>
+<section class="caixa-doc">
+<span class="float-right-top" ><a href="#" title="Voltar ao menu funções.">Voltar ao início  </a></span><h2 class="subtitulo-doc">funcao md5.hmac_hex(chave, mensagem)</h2><div class="corpo-doc">
+<p>Calcula o HMAC-MD5 de uma mensagem completa de uma só vez, mas retorna em hexadecimal.</p>
+
+<div class="titulo-params"><h3>Parâmetros:</h3></div><div class="params-doc"><span > chave {string} - A chave secreta usada para o hashing.</span>
+</div>
+<div class="params-doc"><span > mensagem {string} - A mensagem (texto ou binário) a ser autenticada.</span>
+</div>
+
+<div class="titulo-returns"><h3>Retornos:</h3></div><div class="returns-doc"><span >     {string} - O hash hexadecimal resultante, ou nulo em caso de erro.</span>
 </div>
 </div>
 </section>
